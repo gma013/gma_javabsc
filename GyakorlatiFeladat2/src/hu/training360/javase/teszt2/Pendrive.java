@@ -44,7 +44,7 @@ public class Pendrive {
     }
 
     public void risePrice(int percent) {
-        this.price=this.price*((1+percent)/100);
+        this.price=this.price+((this.price*percent)/100);
     }
 
     public int comparePricePerCapacity(Pendrive pendrive) {

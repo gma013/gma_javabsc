@@ -24,5 +24,16 @@ public class Pendrives {
         }
         return minPricePendrive;
     }
+    static public void risePriceWhereCapacity(List<Pendrive> pendrives,int percent, int capacity) {
+
+        for (Pendrive pd:pendrives) {
+            if (pd.getCapacity() == capacity)
+            {
+                pd.risePrice(percent);
+            }
+        }
+
+    }
+
 
 }
