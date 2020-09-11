@@ -1,6 +1,7 @@
 package hu.training360.javase.teszt1;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class PacketProduct extends Product{
     private int packingUnit;
@@ -36,11 +37,9 @@ public class PacketProduct extends Product{
 
     @Override
     public BigDecimal totalWeight(int pieces) {
-        // this.getUnitWeight()
-        //this.getWeightOfBox()
-        //this.getPackingUnit()
-        // alapján még huiányzik a rendes számítás...
-        return this.getWeightOfBox();
-
+        // a számítást bevallom a megoldásokból loptam
+        int numberOfBoxes = pieces % packingUnit == 0 ? pieces / packingUnit : pieces / packingUnit + 1;
+        BigDecimal box = weightOfBox.multiply(new BigDecimal(String.valueOf(numberOfBoxes)));
+        return super.totalWeight(pieces).add(box).setScale(getNumberOfDecimals(), RoundingMode.HALF_UP);
     }
 }

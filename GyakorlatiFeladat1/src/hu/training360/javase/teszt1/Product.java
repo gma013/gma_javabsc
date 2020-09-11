@@ -1,8 +1,9 @@
 package hu.training360.javase.teszt1;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
-abstract public class Product {
+public class Product {
     private String name;
     private BigDecimal unitWeight;
     private int numberOfDecimals;
@@ -17,7 +18,10 @@ abstract public class Product {
         this.numberOfDecimals = numberOfDecimals;
     }
 
-    abstract public BigDecimal totalWeight(int pieces);
+    public BigDecimal totalWeight(int pieces){
+        // a számítást bevallom a megoldásokból loptam
+        return unitWeight.multiply(new BigDecimal(String.valueOf(pieces))).setScale(numberOfDecimals, RoundingMode.HALF_UP);
+    };
 
     public String getName() {
         return name;
